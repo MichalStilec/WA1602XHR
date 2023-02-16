@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script> 
+    const resDiv = document.querySelector("#responseDiv");
+    const req = new XMLHttpRequest();
+    req.addEventListener("load", function() {
+        load(this.response);
+    });
+    req.open("GET", "https://datausa.io/api/data?drilldowns=Nation&measures=Population");
+    req.send();
+
+
+    function load(jsonstr) {
+        let array = [];
+        array = JSON.parse(jsonstr);
+        console.log(array);
+    }
+
+    class Nation {
+        idnation;
+        nation;
+        idyear;
+        year;
+        population;
+        slugnation;
+
+        constructor (idnation,nation,idyear,year,population,slugnation) {
+            this.idnation = idnation;
+            this.nation = nation;
+            this.idyear = idyear;
+            this.year = year;
+            this.population = population;
+            this.slugnation = slugnation;
+        } 
+
+    }
+
+</script>
